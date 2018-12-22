@@ -1,0 +1,57 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+}
+
+body {
+  background: #57842e;
+}
+
+#app {
+  height: 100vh;
+  padding: 100px 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+@keyframes travel {
+  from {
+    left: 100vw;
+  }
+
+  to {
+    left: 0;
+  }
+}
+
+.Christmas-tree {
+  font-size: 64px;
+  height: 70px;
+  width: 56px;
+  left: 5%;
+  position: absolute;
+}
+
+.Present {
+  position: absolute;
+  height: 26px;
+  width: 24px;
+  font-size: 24px;
+
+  animation-timing-function: linear;
+  animation-duration: 3s;
+  animation-name: travel;
+}
+
+.Score {
+  position: absolute;
+  color: #fff;
+  top: 20px;
+  width: 100vw;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 24px;
+  font-weight: 700;
+}
