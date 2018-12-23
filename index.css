@@ -22,15 +22,15 @@ body {
   }
 
   to {
-    left: -100px;
+    left: 0;
   }
 }
 
 .Christmas-tree {
-  font-size: 64px;
-  height: 70px;
-  width: 56px;
-  left: 5%;
+  font-size: 100px;
+  height: 108px;
+  width: 52px;
+  left: 8%;
   position: absolute;
 }
 

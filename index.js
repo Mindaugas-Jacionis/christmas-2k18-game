@@ -67,6 +67,10 @@
         currentPresent.remove();
         score++;
       }
+
+      if (currentPresent.offsetLeft === 0) {
+        currentPresent.remove();
+      }
     });
 
     scoreBoard.textContent = score;
