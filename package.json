@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "clean": "rm -rf public build dist",
+    "build": "npm run clean && npx parcel build index.html --out-dir public --no-source-maps"
+  },
+  "devDependencies": {
+    "cssnano": "^4.1.8"
+  }
+}
