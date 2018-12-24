@@ -1,7 +1,11 @@
 (function() {
   const app = document.getElementById("app");
   const christmasTree = document.createElement("div");
+  const board = document.createElement("div");
   const scoreBoard = document.createElement("div");
+  const scoreSpan = document.createElement("span");
+  const timerBoard = document.createElement("div");
+  const timerSpan = document.createElement("span");
   const present = "🎁";
   const interval = 10;
   const appPaddingVertical = 100;
@@ -11,16 +15,28 @@
   let controlsInterval = -1;
   let score = 0;
   let allPresents = [];
-  let time = 0;
+  let loopTime = 0;
+  let time = 30;
 
   christmasTree.className = "Christmas-tree";
   christmasTree.textContent = "🎄";
 
-  scoreBoard.className = "Score";
-  scoreBoard.textContent = score;
+  board.className = "Board";
 
+  scoreBoard.className = "Score";
+  scoreBoard.textContent = "Score: ";
+  scoreBoard.appendChild(scoreSpan);
+  scoreSpan.textContent = score;
+
+  timerBoard.className = "Timer";
+  timerBoard.textContent = "Time Left: ";
+  timerBoard.appendChild(timerSpan);
+  timerSpan.textContent = time;
+
+  board.appendChild(scoreBoard);
+  board.appendChild(timerBoard);
+  app.appendChild(board);
   app.appendChild(christmasTree);
-  app.appendChild(scoreBoard);
   app.style.padding = `${appPaddingVertical}px 0`;
 
   const checkCollision = currentPresent => {
@@ -66,6 +82,7 @@
       if (checkCollision(currentPresent)) {
         currentPresent.remove();
         score++;
+        time++;
       }
 
       if (currentPresent.offsetLeft === 0) {
@@ -73,7 +90,8 @@
       }
     });
 
-    scoreBoard.textContent = score;
+    scoreSpan.textContent = score;
+    timerSpan.textContent = time;
   };
 
   const randomPosition = () => {
@@ -86,11 +104,13 @@
 
   const startGame = () => {
     intervalId = setInterval(() => {
-      time += interval;
+      loopTime += interval;
 
-      if (time % 1000 === 0) {
+      if (loopTime % 1000 === 0) {
         const newPresent = document.createElement("div");
         const topOffset = randomPosition();
+
+        time -= 1;
 
         newPresent.className = "Present";
         newPresent.textContent = present;
