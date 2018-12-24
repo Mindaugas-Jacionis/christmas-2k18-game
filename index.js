@@ -13,6 +13,7 @@
   const upKeyCodes = [87, 38]; // w & arrow up
   const downKeyCodes = [83, 40]; // s & arrow down
   let controlsInterval = -1;
+  let gameInterval = -1;
   let score = 0;
   let allPresents = [];
   let loopTime = 0;
@@ -102,15 +103,33 @@
     return topOffset;
   };
 
+  const finishGame = () => {
+    const overlay = document.createElement("div");
+    const restartButton = document.createElement("button");
+
+    overlay.className = "Overlay";
+    overlay.appendChild(restartButton);
+
+    restartButton.type = "button";
+    restartButton.textContent = "Restart";
+
+    app.appendChild(overlay);
+
+    restartButton.addEventListener("click", () => document.location.reload());
+
+    clearInterval(gameInterval);
+    clearInterval(controlsInterval);
+
+    console.log("Finish");
+  };
+
   const startGame = () => {
-    intervalId = setInterval(() => {
+    gameInterval = setInterval(() => {
       loopTime += interval;
 
       if (loopTime % 1000 === 0) {
         const newPresent = document.createElement("div");
         const topOffset = randomPosition();
-
-        time -= 1;
 
         newPresent.className = "Present";
         newPresent.textContent = present;
@@ -118,6 +137,12 @@
 
         app.appendChild(newPresent);
         allPresents = [...allPresents, newPresent];
+
+        if (time > 0) {
+          time -= 1;
+        } else {
+          finishGame();
+        }
       }
 
       render();
