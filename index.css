@@ -1,3 +1,7 @@
+* {
+  transition: all 0.3s ease-out;
+}
+
 html,
 body {
   padding: 0;
@@ -7,6 +11,22 @@ body {
 
 body {
   background: #57842e;
+}
+
+button {
+  font-size: 44px;
+  font-weight: 700;
+  padding: 10px 30px;
+  background: #fbbd05;
+  border-radius: 7px;
+  color: rgba(255, 255, 255, 0.8);
+  border-color: #fbbd05;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #fff;
+  color: rgba(251, 189, 5, 0.8);
 }
 
 #app {
@@ -54,4 +74,16 @@ body {
   font-family: "Courier New", Courier, monospace;
   font-size: 24px;
   font-weight: 700;
+}
+
+.Overlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

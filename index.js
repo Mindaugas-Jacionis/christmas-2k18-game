@@ -104,8 +104,26 @@
     }, interval);
   };
 
+  const renderStart = () => {
+    const overlay = document.createElement("div");
+    const startButton = document.createElement("button");
+
+    overlay.className = "Overlay";
+    overlay.appendChild(startButton);
+
+    startButton.type = "button";
+    startButton.textContent = "Start";
+
+    app.appendChild(overlay);
+
+    startButton.addEventListener("click", () => {
+      overlay.remove();
+      startGame();
+    });
+  };
+
   render();
-  window.addEventListener("load", startGame);
+  window.addEventListener("load", renderStart);
   document.addEventListener("keydown", handleControls);
   document.addEventListener("keyup", () => {
     console.log();
