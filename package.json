@@ -5,7 +5,7 @@
   "homepage": "https://mindaugas-jacionis.github.io/christmas-2k18-game",
   "scripts": {
     "clean": "rm -rf public build dist",
-    "build": "npm run clean && npx parcel build ./src/index.html --out-dir build --no-source-maps",
+    "build": "npm run clean && npx parcel build ./src/index.html --out-dir build --public-url ./ --no-source-maps",
     "deploy": "npm run build && gh-pages -d build"
   },
   "devDependencies": {

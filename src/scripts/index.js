@@ -106,12 +106,18 @@
   const finishGame = () => {
     const overlay = document.createElement("div");
     const restartButton = document.createElement("button");
+    const message = document.createElement("p");
 
-    overlay.className = "Overlay";
+    overlay.className = "Overlay__column";
+    overlay.appendChild(message);
     overlay.appendChild(restartButton);
 
     restartButton.type = "button";
     restartButton.textContent = "Restart";
+
+    message.className = "Message";
+    message.textContent =
+      "You are amazing! Happy holidays! Keep on rocking next year!";
 
     app.appendChild(overlay);
 
@@ -119,8 +125,6 @@
 
     clearInterval(gameInterval);
     clearInterval(controlsInterval);
-
-    console.log("Finish");
   };
 
   const startGame = () => {
