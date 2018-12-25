@@ -83,7 +83,8 @@ button:hover {
   font-weight: 700;
 }
 
-.Overlay {
+.Overlay,
+.Overlay__column {
   background: rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 0;
@@ -93,4 +94,17 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.Overlay__column {
+  flex-direction: column;
+}
+
+.Message {
+  color: #fff;
+  font-size: 44px;
+  line-height: 68px;
+  font-weight: 700;
+  text-align: center;
+  padding: 0 20vw;
 }
