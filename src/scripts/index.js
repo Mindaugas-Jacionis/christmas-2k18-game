@@ -6,12 +6,15 @@
   const scoreSpan = document.createElement("span");
   const timerBoard = document.createElement("div");
   const timerSpan = document.createElement("span");
+  const mobileControls = document.createElement("div");
+  const buttonUp = document.createElement("button");
+  const buttonDown = document.createElement("button");
   const present = "🎁";
   const interval = 10;
   const appPaddingVertical = 100;
   // using keyCode instead of key, as in other languages symbol might differ
-  const upKeyCodes = [87, 38]; // w & arrow up
-  const downKeyCodes = [83, 40]; // s & arrow down
+  const upKeyCodes = [87, 38, "up"]; // w & arrow up
+  const downKeyCodes = [83, 40, "down"]; // s & arrow down
   let controlsInterval = -1;
   let gameInterval = -1;
   let score = 0;
@@ -29,6 +32,17 @@
   scoreBoard.appendChild(scoreSpan);
   scoreSpan.textContent = score;
 
+  mobileControls.className = "Mobile-controls";
+  buttonUp.type = "button";
+  buttonDown.type = "button";
+  buttonUp.className = "Mobile-controls--button";
+  buttonDown.className = "Mobile-controls--button";
+  buttonUp.textContent = "⬆️";
+  buttonDown.textContent = "⬇️";
+
+  mobileControls.appendChild(buttonUp);
+  mobileControls.appendChild(buttonDown);
+
   timerBoard.className = "Timer";
   timerBoard.textContent = "Time Left: ";
   timerBoard.appendChild(timerSpan);
@@ -38,7 +52,11 @@
   board.appendChild(timerBoard);
   app.appendChild(board);
   app.appendChild(christmasTree);
+  app.appendChild(mobileControls);
   app.style.padding = `${appPaddingVertical}px 0`;
+
+  buttonUp.addEventListener("click", () => {});
+  buttonDown.addEventListener("click", () => {});
 
   const checkCollision = currentPresent => {
     const horizontalCollision =
@@ -78,6 +96,11 @@
     }
   };
 
+  const clearControls = () => {
+    clearInterval(controlsInterval);
+    controlsInterval = -1;
+  };
+
   const render = () => {
     allPresents.forEach(currentPresent => {
       if (checkCollision(currentPresent)) {
@@ -106,9 +129,11 @@
   const finishGame = () => {
     const overlay = document.createElement("div");
     const restartButton = document.createElement("button");
+    const finalScore = document.createElement("p");
     const message = document.createElement("p");
 
-    overlay.className = "Overlay__column";
+    overlay.className = "Finish Overlay__column";
+    overlay.appendChild(finalScore);
     overlay.appendChild(message);
     overlay.appendChild(restartButton);
 
@@ -116,6 +141,7 @@
     restartButton.textContent = "Restart";
 
     message.className = "Message";
+    finalScore.textContent = `Your score: ${score}`;
     message.textContent =
       "You are amazing! Happy holidays! Keep on rocking next year!";
 
@@ -171,12 +197,20 @@
     });
   };
 
+  buttonUp.addEventListener("mousedown", () =>
+    handleControls({ keyCode: "up" })
+  );
+  buttonDown.addEventListener("mousedown", () =>
+    handleControls({ keyCode: "down" })
+  );
+
+  buttonUp.addEventListener("mouseup", clearControls);
+  buttonDown.addEventListener("mouseup", clearControls);
+  buttonUp.addEventListener("mouseleave", clearControls);
+  buttonDown.addEventListener("mouseleave", clearControls);
+
   render();
   window.addEventListener("load", renderStart);
   document.addEventListener("keydown", handleControls);
-  document.addEventListener("keyup", () => {
-    console.log();
-    clearInterval(controlsInterval);
-    controlsInterval = -1;
-  });
+  document.addEventListener("keyup", clearControls);
 })();

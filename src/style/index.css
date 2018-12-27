@@ -100,11 +100,28 @@ button:hover {
   flex-direction: column;
 }
 
-.Message {
+.Finish p {
   color: #fff;
   font-size: 44px;
   line-height: 68px;
   font-weight: 700;
   text-align: center;
   padding: 0 20vw;
+}
+
+.Mobile-controls {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+}
+
+.Mobile-controls--button {
+  padding: 0;
+  background: transparent;
+  border-width: 0px;
+  line-height: 40px;
+  margin: 10px;
+  outline: transparent;
 }
