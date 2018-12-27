@@ -200,7 +200,13 @@
   buttonUp.addEventListener("mousedown", () =>
     handleControls({ keyCode: "up" })
   );
+  buttonUp.addEventListener("touchstart", () =>
+    handleControls({ keyCode: "up" })
+  );
   buttonDown.addEventListener("mousedown", () =>
+    handleControls({ keyCode: "down" })
+  );
+  buttonDown.addEventListener("touchstart", () =>
     handleControls({ keyCode: "down" })
   );
 
@@ -208,6 +214,10 @@
   buttonDown.addEventListener("mouseup", clearControls);
   buttonUp.addEventListener("mouseleave", clearControls);
   buttonDown.addEventListener("mouseleave", clearControls);
+  buttonUp.addEventListener("touchcancel", clearControls);
+  buttonDown.addEventListener("touchcancel", clearControls);
+  buttonUp.addEventListener("touchend", clearControls);
+  buttonDown.addEventListener("touchend", clearControls);
 
   render();
   window.addEventListener("load", renderStart);
