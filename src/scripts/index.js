@@ -164,6 +164,7 @@
         newPresent.className = "Present";
         newPresent.textContent = present;
         newPresent.style.top = `${topOffset}px`;
+        newPresent.style.position = "absolute";
 
         app.appendChild(newPresent);
         allPresents = [...allPresents, newPresent];

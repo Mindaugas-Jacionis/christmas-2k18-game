@@ -1,18 +1,22 @@
-html,
-body {
+* {
   padding: 0;
   margin: 0;
+}
+
+html,
+body {
   height: 100vh;
 }
 
 body {
   background: #57842e;
   font-family: "Courier New", Courier, monospace;
+  font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
 
 button {
   transition: all 0.3s ease-out;
-  font-size: 44px;
+  font-size: calc(26px + (44 - 26) * ((100vw - 300px) / (1600 - 300)));
   font-weight: 700;
   padding: 10px 30px;
   background: #fbbd05;
@@ -45,18 +49,19 @@ button:hover {
 }
 
 .Christmas-tree {
-  font-size: 100px;
-  height: 108px;
-  width: 52px;
+  /* font-size: 100px; */
+  font-size: calc(50px + (100 - 50) * ((100vw - 300px) / (1600 - 300)));
+  height: calc(54px + (108 - 54) * ((100vw - 300px) / (1600 - 300)));
+  width: calc(28px + (52 - 28) * ((100vw - 300px) / (1600 - 300)));
   left: 8%;
   position: absolute;
 }
 
 .Present {
   position: absolute;
-  height: 26px;
-  width: 24px;
-  font-size: 24px;
+  height: calc(17px + (26 - 15) * ((100vw - 300px) / (1600 - 300)));
+  width: calc(14px + (24 - 14) * ((100vw - 300px) / (1600 - 300)));
+  font-size: calc(14px + (24 - 14) * ((100vw - 300px) / (1600 - 300)));
 
   animation-timing-function: linear;
   animation-duration: 3s;
@@ -79,7 +84,6 @@ button:hover {
   flex: 1;
   text-align: center;
   font-family: "Courier New", Courier, monospace;
-  font-size: 24px;
   font-weight: 700;
 }
 
@@ -102,11 +106,14 @@ button:hover {
 
 .Finish p {
   color: #fff;
-  font-size: 44px;
-  line-height: 68px;
+  font-size: calc(26px + (44 - 26) * ((100vw - 300px) / (1600 - 300)));
+  line-height: calc(32px + (68 - 32) * ((100vw - 300px) / (1600 - 300)));
   font-weight: 700;
   text-align: center;
-  padding: 0 20vw;
+  padding-left: calc(7vw + (20 - 7) * ((100vw - 300px) / (1600 - 300)));
+  padding-right: calc(7vw + (20 - 7) * ((100vw - 300px) / (1600 - 300)));
+  padding-top: calc(4vw + (20 - 4) * ((100vw - 300px) / (1600 - 300)));
+  padding-bottom: calc(4vw + (20 - 4) * ((100vw - 300px) / (1600 - 300)));
 }
 
 .Mobile-controls {
@@ -121,6 +128,7 @@ button:hover {
   padding: 0;
   background: transparent;
   border-width: 0px;
+  font-size: 44px;
   line-height: 40px;
   margin: 10px;
   outline: transparent;
@@ -130,4 +138,26 @@ button:hover {
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
+}
+
+.Finish p.Message {
+  padding-top: 0;
+}
+
+@media (max-width: 769px) {
+  .Present {
+    animation-duration: 2.5s;
+  }
+}
+
+@media (max-width: 482px) {
+  .Present {
+    animation-duration: 2s;
+  }
+}
+
+@media (max-width: 321px) {
+  .Present {
+    animation-duration: 1.5s;
+  }
 }
